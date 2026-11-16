@@ -8,5 +8,15 @@
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://irmabaitussalam.github.io/$1"
+    }
   ]
 }
