@@ -1,6 +1,13 @@
-// api/verify.js
 export default async function handler(req, res) {
-  // Hanya izinkan metode POST
+  // 1. Tangani preflight OPTIONS
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', 'https://irmabaitussalam.github.io');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    return res.status(204).end(); // 204 No Content, sukses
+  }
+
+  // 2. Hanya izinkan POST untuk request sebenarnya
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
